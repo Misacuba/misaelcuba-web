@@ -1,0 +1,463 @@
+<!doctype html><html lang="es" data-palette="ejecutivo"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#F3F6F8"><link rel="icon" type="image/svg+xml" href="isotipo-misael-cuba.svg">
+<title>Misael Cuba</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Misael Cuba, ingeniero de sistemas. Costos, productividad e indicadores para operaciones mineras.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&family=DM+Sans:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: una columna ancha con un hero en dos mitades (texto | átomo), luego bandas de contenido sobre la misma retícula. */
+:root{
+  --bg:#101422; --surface:#161B2C; --line:#272B3B; --fg:#F3F7FA; --muted:#A9B6C6;
+  --accent:#5AA9E6; --accent-2:#A8DCE7; --on-accent:#101422; --glow:rgba(90,169,230,.14);
+  --f-display:'Sora',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:dark;
+}
+
+/* Paletas: cambia data-palette en <html> por azulcobre, datos, cobre, oro, crisocola, ejecutivo o cobalto */
+:root[data-palette="azulcobre"]{--bg:#101422;--surface:#152137;--line:#1B3050;--fg:#F3F7FA;--muted:#A9B6C6;--accent:#D9824B;--accent-2:#EABA9C;--on-accent:#101422;--glow:#D9824B24;--tile:#1F3A5F;--logo-m:#5AA9E6;--logo-c:#F7F9FC;--logo-dot:#D9824B;color-scheme:dark}
+:root[data-palette="datos"]{--bg:#101422;--surface:#152137;--line:#1B3050;--fg:#F3F7FA;--muted:#A9B6C6;--accent:#5AA9E6;--accent-2:#A4D0F1;--on-accent:#101422;--glow:#5AA9E624;--tile:#1F3A5F;--logo-m:#5AA9E6;--logo-c:#F7F9FC;--logo-dot:#B5D8F4;color-scheme:dark}
+:root[data-palette="cobre"]{--bg:#15171C;--surface:#221F21;--line:#312826;--fg:#F5EFEA;--muted:#BFB2A8;--accent:#D9824B;--accent-2:#EABA9C;--on-accent:#15171C;--glow:#D9824B24;--tile:#3A2E2A;--logo-m:#D9824B;--logo-c:#F8F4F0;--logo-dot:#EEC7AE;color-scheme:dark}
+:root[data-palette="oro"]{--bg:#0E1A2B;--surface:#152438;--line:#1E2F46;--fg:#F2F5F8;--muted:#A8B4C2;--accent:#E3B341;--accent-2:#F0D596;--on-accent:#0E1A2B;--glow:#E3B34124;--tile:#23364F;--logo-m:#E3B341;--logo-c:#F6F8FA;--logo-dot:#F2DDAA;color-scheme:dark}
+:root[data-palette="crisocola"]{--bg:#0B1E22;--surface:#0F2B30;--line:#13393F;--fg:#EEF7F6;--muted:#A3BFBC;--accent:#3FD5B4;--accent-2:#95E8D6;--on-accent:#0B1E22;--glow:#3FD5B424;--tile:#164249;--logo-m:#3FD5B4;--logo-c:#F3F9F9;--logo-dot:#A9ECDD;color-scheme:dark}
+:root[data-palette="ejecutivo"]{--bg:#F3F6F8;--surface:#FFFFFF;--line:#D1D8E0;--fg:#101422;--muted:#4A5B6C;--accent:#1F6FB2;--accent-2:#1F3A5F;--on-accent:#F3F6F8;--glow:#1F6FB224;--tile:#1F3A5F;--logo-m:#79A9D1;--logo-c:#F7F9FA;--logo-dot:#9ABEDC;color-scheme:light}
+:root[data-palette="cobalto"]{--bg:#EEF0F4;--surface:#FFFFFF;--line:#CFD1D7;--fg:#12151C;--muted:#4B5363;--accent:#2F5BEA;--accent-2:#2A303C;--on-accent:#EEF0F4;--glow:#2F5BEA24;--tile:#2A303C;--logo-m:#829DF2;--logo-c:#F3F4F7;--logo-dot:#A1B5F6;color-scheme:light}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.7 var(--f-body);margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+.label{font:500 12px/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+/* Isotipo MC (monograma original, afinado) */
+#mc .tile{fill:var(--tile)}
+#mc .m{fill:var(--logo-m)}
+#mc .c{fill:none;stroke:var(--logo-c);stroke-width:12}
+.iso .dot{fill:var(--logo-dot);transform-box:fill-box;transform-origin:center}
+
+/* Header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:700 15px 'DM Sans',var(--f-body);letter-spacing:.08em}
+.brand svg{width:38px;height:38px;flex:none}
+.brand span{white-space:nowrap}
+nav{display:flex;align-items:center;gap:22px;font-size:14px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--fg)}
+
+
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:72px 56px}
+.hero h1{font-size:clamp(40px,6vw,72px);line-height:1.02;letter-spacing:-.045em;font-weight:300;margin-block:18px 22px}
+.hero h1 strong{font-weight:800;color:var(--accent)}
+.lead{font-size:18px;color:var(--muted);max-width:56ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;font:600 14px var(--f-body);text-decoration:none;border:1px solid var(--accent);cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.ghost{background:transparent;color:var(--fg)}
+.btn.ghost:hover{background:var(--glow)}
+.atom{position:relative;justify-self:center;width:100%;max-width:420px;aspect-ratio:1}
+.atom::before,.atom::after{content:"";position:absolute;border-radius:50%;border:1px solid var(--line)}
+.atom::before{inset:4%;background:radial-gradient(circle,var(--glow),transparent 68%)}
+.atom::after{inset:18%}
+.atom svg{position:absolute;inset:31%;width:38%;height:38%;filter:drop-shadow(0 18px 40px rgba(16,20,34,.35))}
+.unit{position:absolute;font:500 12px var(--f-mono);color:var(--muted);background:var(--surface);border:1px solid var(--line);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.unit i{font-style:normal;color:var(--accent)}
+.u1{top:6%;left:0}.u2{top:46%;right:-2%}.u3{bottom:6%;left:8%}
+
+/* Cifras */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line)}
+.facts div{padding:22px 20px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.facts div:first-child{border-left:0;padding-left:0}
+.facts strong{font:600 32px/1 var(--f-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.facts span{font-size:14px;color:var(--muted)}
+
+section{padding-block:88px 0}
+.head{display:flex;flex-direction:column;gap:12px;margin-bottom:36px;max-width:680px}
+.head h2{font-size:clamp(30px,4vw,44px);line-height:1.1;letter-spacing:-.035em;font-weight:600}
+.head p{color:var(--muted)}
+
+/* Servicios */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.service{display:flex;flex-direction:column;gap:12px;padding-top:20px;border-top:2px solid var(--accent)}
+.service h3{font-size:21px;font-weight:600;letter-spacing:-.02em}
+.service p{color:var(--muted);font-size:15px}
+.tools{font:400 12px/1.6 var(--f-mono);color:var(--accent-2);margin-top:auto}
+
+/* Proyecto actual */
+.feature{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:28px}
+.feature-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-start}
+.feature-top h3{font-size:clamp(24px,3vw,32px);line-height:1.15;letter-spacing:-.03em;font-weight:600;max-width:640px}
+.feature-top p{color:var(--muted);max-width:640px;margin-top:10px}
+.status{display:inline-flex;align-items:center;gap:8px;font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;counter-reset:paso}
+.flow li{counter-increment:paso;display:flex;flex-direction:column;gap:6px;padding:18px 16px;border-radius:14px;background:var(--bg);border:1px solid var(--line);position:relative;min-width:0}
+.flow li::before{content:"0" counter(paso);font:500 12px var(--f-mono);color:var(--accent)}
+.flow li:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:16px;font:500 14px var(--f-mono);color:var(--muted);background:var(--surface);line-height:1}
+.flow b{font-size:16px;font-weight:600}
+.flow span{font-size:14px;line-height:1.55;color:var(--muted)}
+.flow em{font-style:normal;color:var(--fg);font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chips small{font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.chip{font:500 13px var(--f-mono);border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--bg)}
+.goal{border-top:1px solid var(--line);padding-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.goal div{display:flex;flex-direction:column;gap:4px}
+.goal b{font-size:15px;font-weight:600}
+.goal span{font-size:14px;color:var(--muted)}
+@media (max-width:960px){.flow{grid-template-columns:1fr}.flow li:not(:last-child)::after{content:"↓";right:auto;left:16px;top:auto;bottom:-10px}.goal{grid-template-columns:1fr}.feature{padding:24px}}
+
+/* Proyectos */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.project{display:flex;flex-direction:column;gap:10px;padding:26px;background:var(--surface);border:1px solid var(--line);border-radius:14px;text-decoration:none;transition:border-color .2s,transform .2s}
+.project:hover{border-color:var(--accent);transform:translateY(-3px)}
+.project .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.tag{font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.arrow{font-family:var(--f-mono);color:var(--muted)}
+.project h3{font-size:22px;font-weight:600;letter-spacing:-.02em}
+.project p{color:var(--muted);font-size:15px}
+.url{font:400 12px var(--f-mono);color:var(--muted);overflow-wrap:anywhere}
+
+/* Trayectoria */
+.timeline{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.job{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding-block:24px;border-bottom:1px solid var(--line)}
+.when{font:400 13px/1.6 var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.job h3{font-size:19px;font-weight:600;letter-spacing:-.01em}
+.org{color:var(--accent);font-weight:500;font-size:15px}
+.job ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:15px;display:flex;flex-direction:column;gap:4px}
+.job.now .when::before{content:"● ";color:var(--accent)}
+
+/* Formación */
+.learn{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+.degree{padding:28px;border:1px solid var(--line);border-radius:14px;background:var(--surface);display:flex;flex-direction:column;gap:8px;align-self:start}
+.degree h3{font-size:22px;font-weight:600}
+.degree p{color:var(--muted)}
+.courses{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.courses li{padding-block:12px;border-bottom:1px solid var(--line);font-size:15px;display:flex;flex-direction:column}
+.courses li span{font-size:13px;color:var(--muted)}
+
+/* Contacto */
+.contact{margin-block:96px 0;padding:44px;border-radius:20px;background:var(--surface);border:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.contact h2{font-size:clamp(28px,4vw,42px);line-height:1.1;letter-spacing:-.035em;font-weight:600;margin-block:10px 8px}
+.contact p{color:var(--muted)}
+.channels{display:flex;flex-direction:column;gap:12px;min-width:0}
+.channel{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.channel code{font:500 15px var(--f-mono);user-select:all;overflow-wrap:anywhere}
+.copy{appearance:none;font:500 12px var(--f-mono);border:1px solid var(--line);background:transparent;color:var(--fg);border-radius:999px;padding:6px 12px;cursor:pointer;min-height:32px}
+.copy:hover{border-color:var(--accent)}
+footer{margin-top:64px;border-top:1px solid var(--line)}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-block:24px;font-size:13px;color:var(--muted)}
+
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.7}}
+.atom .dot{animation:pulse 2.6s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.atom .dot{animation:none}.project{transition:none}}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-block:48px 40px;gap:32px}
+  .atom{max-width:320px}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts div:nth-child(3){border-left:0;padding-left:0}
+  .facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .services,.projects,.learn{grid-template-columns:1fr}
+  .learn{gap:28px}
+  .contact{grid-template-columns:1fr;padding:28px}
+  nav .hide-sm{display:none}
+}
+@media (max-width:560px){
+  .job{grid-template-columns:1fr;gap:6px}
+  .courses{grid-template-columns:1fr}
+  .u2{right:0}
+  nav{gap:12px;font-size:13px}
+  .brand{font-size:13px;gap:8px}
+  .brand svg{width:32px;height:32px}
+}
+</style>
+</head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="mc">
+      <rect class="tile" width="128" height="128" rx="28"/>
+      <path class="m" d="M15 90V38h13l11 18 11-18h13v52H51V60L39 79 27 60v30Z"/>
+      <path class="c" d="M107.14 49.86A20 20 0 1 0 107.14 78.14"/>
+    </g>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#inicio" aria-label="Misael Cuba, inicio">
+      <svg class="iso" viewBox="0 0 128 128" aria-hidden="true"><use href="#mc"/><circle class="dot" cx="111" cy="64" r="5.5"/></svg>
+      <span>MISAEL CUBA</span>
+    </a>
+    <nav aria-label="Secciones">
+      <a href="#proyectos">Proyectos</a>
+      <a class="hide-sm" href="#trayectoria">Trayectoria</a>
+      <a href="#contacto">Contacto</a>
+      <a class="hide-sm" href="https://www.linkedin.com/in/misacuba" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Misacuba" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <div class="label">Ingeniería de sistemas · Minería · Datos</div>
+        <h1>Convierto la operación minera en <strong>decisiones claras.</strong></h1>
+        <p class="lead">Soy Misael Cuba, ingeniero de sistemas especializado en costos y productividad. Llevo los reportes de guardia, los recursos y el avance a indicadores y aplicaciones que el equipo usa todos los días.</p>
+        <div class="actions">
+          <a class="btn primary" href="#proyectos">Ver proyectos <span aria-hidden="true">↓</span></a>
+          <a class="btn ghost" href="#contacto">Conversemos</a>
+        </div>
+      </div>
+      <div class="atom" role="img" aria-label="Isotipo de Misael Cuba: monograma MC con un punto de datos">
+        <svg class="iso" viewBox="0 0 128 128" aria-hidden="true">
+          <use href="#mc"/>
+          <circle class="dot" cx="111" cy="64" r="5.5"/>
+        </svg>
+        <span class="unit u1"><i>t</i> / guardia</span>
+        <span class="unit u2"><i>US$</i> / m avance</span>
+        <span class="unit u3"><i>%</i> disponibilidad</span>
+      </div>
+    </div>
+
+    <div class="facts">
+      <div><strong>15</strong><span>años en proyectos y operación, desde 2011</span></div>
+      <div><strong>6</strong><span>organizaciones en minería y sector público</span></div>
+      <div><strong>4</strong><span>aplicaciones web en uso operativo</span></div>
+      <div><strong>14</strong><span>cursos de especialización</span></div>
+    </div>
+
+    <section id="servicios">
+      <div class="head">
+        <div class="label">Qué hago</div>
+        <h2>Del reporte en papel al indicador en tiempo real.</h2>
+        <p>Entiendo el proceso en campo y sé construir la herramienta. Esa combinación evita sistemas que nadie usa.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <h3>Costos y productividad</h3>
+          <p>Precios unitarios, valorizaciones por guardia, control de aceros, materiales y EPP. Seguimiento del costo frente al avance programado.</p>
+          <div class="tools">Minería mecanizada y convencional · S10</div>
+        </article>
+        <article class="service">
+          <h3>Indicadores y dashboards</h3>
+          <p>KPI de desempeño (productividad, costos y recursos) que se consultan desde cualquier dispositivo y se actualizan con la operación.</p>
+          <div class="tools">Power BI · Power Query · Looker Studio</div>
+        </article>
+        <article class="service">
+          <h3>Aplicaciones a medida</h3>
+          <p>Registro de operaciones, acarreo e izaje en una sola base de datos, integraciones con SAP y reportes diarios automáticos.</p>
+          <div class="tools">Python · Django · HTML / CSS / JS · AppSheet</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="ahora">
+      <div class="head">
+        <div class="label">En qué trabajo ahora</div>
+        <h2>Escaneo OCR de reportes de operaciones.</h2>
+      </div>
+      <article class="feature">
+        <div class="feature-top">
+          <div>
+            <h3>Portal OCR: gestión documental minera con inteligencia artificial</h3>
+            <p>Cada guardia genera reportes llenados a mano que luego alguien digita. El portal escanea esos reportes, reconoce el texto con OCR, extrae los datos, los valida con las reglas de la operación y los deja listos para los indicadores, sin digitación manual.</p>
+          </div>
+          <span class="status">En desarrollo · 2026</span>
+        </div>
+        <ol class="flow" aria-label="Flujo del sistema">
+          <li><b>Captura</b><span>Foto o escaneo del reporte desde el celular al cierre de la guardia.</span></li>
+          <li><b>Lectura</b><span><em>Document AI</em> reconoce texto, tablas y campos escritos a mano.</span></li>
+          <li><b>Interpretación</b><span><em>Claude (Anthropic)</em> ordena la lectura en campos: equipo, operador, horómetros, viajes, labor.</span></li>
+          <li><b>Validación</b><span><em>Django</em> aplica reglas de la operación y el supervisor corrige en <em>Angular</em> solo lo marcado.</span></li>
+          <li><b>Registro</b><span>Datos aprobados en <em>PostgreSQL</em>, enlazados a la imagen original, listos para los KPI.</span></li>
+        </ol>
+        <div class="chips"><small>Reportes</small><span class="chip">Operaciones</span><span class="chip">Izaje</span><span class="chip">Acarreo</span><span class="chip">Equipos</span></div>
+        <div class="goal">
+          <div><b>Menos digitación manual</b><span>El equipo revisa y aprueba en lugar de transcribir hoja por hoja.</span></div>
+          <div><b>Menos errores de transcripción</b><span>Las reglas detectan horómetros, códigos y horas fuera de rango antes de guardar.</span></div>
+          <div><b>Trazabilidad</b><span>Cada dato se puede comparar con la foto del reporte del que salió.</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="proyectos">
+      <div class="head">
+        <div class="label">Proyectos en operación</div>
+        <h2>Herramientas que hoy usa el equipo de SOTRAMI.</h2>
+      </div>
+      <div class="projects">
+        <a class="project" href="https://sotrami-dashboard.vercel.app/" target="_blank" rel="noopener">
+          <div class="top"><span class="tag">Dashboard</span><span class="arrow" aria-hidden="true">↗</span></div>
+          <h3>Dashboard SOTRAMI</h3>
+          <p>Reporte diario de la unidad con los indicadores operativos clave para el seguimiento y la toma de decisiones.</p>
+          <span class="url">sotrami-dashboard.vercel.app</span>
+        </a>
+        <a class="project" href="https://plf-sotrami.vercel.app/" target="_blank" rel="noopener">
+          <div class="top"><span class="tag">Aplicación web</span><span class="arrow" aria-hidden="true">↗</span></div>
+          <h3>PLF · SOTRAMI</h3>
+          <p>Aplicación para consultar y gestionar la información del PLF en un solo lugar.</p>
+          <span class="url">plf-sotrami.vercel.app</span>
+        </a>
+        <a class="project" href="https://equipos-sotrami.vercel.app/" target="_blank" rel="noopener">
+          <div class="top"><span class="tag">Equipos</span><span class="arrow" aria-hidden="true">↗</span></div>
+          <h3>Control de equipos</h3>
+          <p>Organiza la información de los equipos y su seguimiento en la operación.</p>
+          <span class="url">equipos-sotrami.vercel.app</span>
+        </a>
+        <a class="project" href="https://izaje-acarreo-sotrami.vercel.app/izaje.html" target="_blank" rel="noopener">
+          <div class="top"><span class="tag">Registro operativo</span><span class="arrow" aria-hidden="true">↗</span></div>
+          <h3>Izaje y acarreo</h3>
+          <p>Registro de las actividades de izaje y acarreo desde cualquier dispositivo, hacia una misma base de datos.</p>
+          <span class="url">izaje-acarreo-sotrami.vercel.app</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="trayectoria">
+      <div class="head">
+        <div class="label">Trayectoria</div>
+        <h2>Quince años entre la obra, la mina y los datos.</h2>
+      </div>
+      <div class="timeline">
+        <article class="job now">
+          <div class="when">feb 2026 – ago 2026</div>
+          <div>
+            <h3>Ingeniero de Costos y Productividad</h3>
+            <div class="org">SOTRAMI</div>
+            <ul>
+              <li>Dashboard de reporte diario de la unidad con HTML, CSS y JS.</li>
+              <li>Aplicación web integrada con SAP.</li>
+              <li>Indicadores en Google Data Studio.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">abr 2024 – ene 2026</div>
+          <div>
+            <h3>Jefe de Costos y Productividad</h3>
+            <div class="org">Sector IV</div>
+            <ul>
+              <li>Precios unitarios para la renovación de contrato.</li>
+              <li>Sistema de control de recursos (materiales y EPP).</li>
+              <li>Valorización por guardia con Django y control de aceros con Power Query, Power BI y Looker Studio.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">nov 2022 – jul 2023</div>
+          <div>
+            <h3>Asistente de Costos y Productividad</h3>
+            <div class="org">SOTRAMI</div>
+            <ul>
+              <li>Registro colaborativo de operaciones, acarreo e izaje con AppSheet.</li>
+              <li>Indicadores de desempeño en tiempo real en Google Data Studio.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">feb 2021 – oct 2022</div>
+          <div>
+            <h3>Asistente de Costos y Productividad</h3>
+            <div class="org">Operaciones SEPROCAL</div>
+            <ul><li>Planificación, seguimiento y control de recursos, programas de avance y mediciones diarias, semanales y mensuales.</li></ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">2013 – 2015 · 2016 – 2021</div>
+          <div>
+            <h3>Asistente de Costos</h3>
+            <div class="org">IESA S.A.</div>
+            <ul><li>Registro y análisis de reportes diarios de operaciones y equipos para el control de costos y la mejora continua.</li></ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">abr 2011 – mar 2013</div>
+          <div>
+            <h3>Asistente Técnico</h3>
+            <div class="org">Gobierno Regional de Pasco</div>
+            <ul><li>Identificación, formulación y evaluación de proyectos de preinversión.</li></ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="formacion">
+      <div class="head">
+        <div class="label">Formación</div>
+        <h2>Base en sistemas, especialización en minería.</h2>
+      </div>
+      <div class="learn">
+        <div class="degree">
+          <div class="label">Pregrado</div>
+          <h3>Ingeniería de Sistemas y Computación</h3>
+          <p>Universidad Nacional Daniel Alcides Carrión (UNDAC)</p>
+        </div>
+        <ul class="courses">
+          <li>Análisis de datos con Power BI y Python <span>Codea UNI</span></li>
+          <li>Gestión de KPI y costos en minería subterránea <span>Escuela Global</span></li>
+          <li>Costos y presupuestos en minería superficial y subterránea <span>Escuela Global</span></li>
+          <li>Gestión de procesos y mejora continua <span>CTIC UNI</span></li>
+          <li>Gestión de proyectos <span>Sistemas UNI</span></li>
+          <li>Metodologías ágiles y enfoque Lean <span>Programa de Formación Digital</span></li>
+          <li>S10 Costos y presupuestos <span>Velsagroup</span></li>
+          <li>Invierte.pe y gestión pública <span>Instituto Peruano de Gobierno</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="contact" id="contacto">
+      <div>
+        <div class="label">Contacto</div>
+        <h2>¿Qué necesitas medir o mejorar?</h2>
+        <p>Cuéntame tu reto operativo y vemos cómo convertirlo en un indicador o una herramienta.</p>
+      </div>
+      <div class="channels">
+        <div class="channel">
+          <code id="mail">Cuba.misael@zoho.com</code>
+          <button class="copy" type="button" data-copy="mail" id="copy-mail">Copiar</button>
+        </div>
+        <div class="channel">
+          <code id="tel">+51 990 428 881</code>
+          <button class="copy" type="button" data-copy="tel" id="copy-tel">Copiar</button>
+        </div>
+        <div class="actions" style="margin-top:6px">
+          <a class="btn primary" href="https://wa.me/51990428881" target="_blank" rel="noopener">Escribir por WhatsApp <span aria-hidden="true">↗</span></a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/misacuba" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a class="btn ghost" href="https://github.com/Misacuba" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg> github.com/Misacuba</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Misael Cuba · Costos, productividad y datos</span>
+    <span>misaelcuba.com · <a href="https://www.linkedin.com/in/misacuba" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/Misacuba" target="_blank" rel="noopener">GitHub</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var el=document.getElementById(btn.dataset.copy), text=el.textContent.trim();
+      var done=function(){btn.textContent='Copiado';setTimeout(function(){btn.textContent='Copiar';},1600);};
+      var fallback=function(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Seleccionado';setTimeout(function(){btn.textContent='Copiar';},1600);};
+      try{navigator.clipboard.writeText(text).then(done,fallback);}catch(e){fallback();}
+    });
+  });
+})();
+</script>
+</body></html>
